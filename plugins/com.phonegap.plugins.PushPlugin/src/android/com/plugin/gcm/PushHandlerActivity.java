@@ -22,16 +22,15 @@ public class PushHandlerActivity extends Activity
 		super.onCreate(savedInstanceState);
 		Log.v(TAG, "onCreate");
 
-		boolean isPushPluginActive = PushPlugin.isActive();
+		boolean isPushPluginActive = PushPlugin.isActive(); 
+		if (!isPushPluginActive) {
+			forceMainActivityReload();
+		}
 		processPushBundle(isPushPluginActive);
 
 		GCMIntentService.cancelNotification(this);
 
 		finish();
-
-		if (!isPushPluginActive) {
-			forceMainActivityReload();
-		}
 	}
 
 	/**
