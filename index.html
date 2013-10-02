@@ -66,8 +66,11 @@
         });
         
         
-          function  initPushwoosh()
+function  initPushwoosh()
 {
+
+alert("Init Pushwoosh");
+
     var pushNotification = window.plugins.pushNotification;
     
     pushNotification.onDeviceReady();
@@ -87,6 +90,8 @@
     );
  
     document.addEventListener('push-notification', function(event) {
+      alert("Push notification ");
+      
         var title = event.notification.title;
             var userData = event.notification.userdata;
                                  
