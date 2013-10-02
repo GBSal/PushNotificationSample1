@@ -75,7 +75,7 @@ alert("Init Pushwoosh");
     
     pushNotification.onDeviceReady();
  
-    pushNotification.registerDevice({ projectid: "957840957489", appid : "BD6D5-C2B8D" },
+    pushNotification.registerDevice(
         function(status) {
             var pushToken = status;
             console.warn('push token: ' + pushToken);
@@ -86,7 +86,8 @@ alert("Init Pushwoosh");
             console.warn(msg);
 
             alert (msg);
-        }
+        },
+        { projectid: "957840957489", appid : "BD6D5-C2B8D" }
     );
  
     document.addEventListener('push-notification', function(event) {
