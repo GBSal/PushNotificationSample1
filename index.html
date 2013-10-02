@@ -25,6 +25,7 @@
     <script src="content/scripts/angular.min.js"></script>
 
     <script type="text/javascript">
+        /*
         var isMobile = false;
         try {
             isMobile = !!forge.is.mobile();
@@ -35,8 +36,10 @@
         document.write("<script src='configData" +
             (isMobile ? "_Mob" : "_Svr") +
             ".js'><\/script>");
+            */
     </script>
 <script type="text/javascript">
+        /*
         $(document).ready(function () {
             try {
                 if (isMobile) {
@@ -52,6 +55,53 @@
             }
             catch (e) { }
         });
+        */
+        
+        $(document).ready(function(){
+        
+         alert("doucment Read");
+        
+         initPushwoosh();
+        
+        });
+        
+        
+          function  initPushwoosh()
+{
+    var pushNotification = window.plugins.pushNotification;
+    
+    pushNotification.onDeviceReady();
+ 
+    pushNotification.registerDevice({ projectid: "957840957489", appid : "BD6D5-C2B8D" },
+        function(status) {
+            var pushToken = status;
+            console.warn('push token: ' + pushToken);
+            alert("Push token" + pushToken);
+        },
+        function(status) {
+            var msg= JSON.stringify(['failed to register ', status])
+            console.warn(msg);
+
+            alert (msg);
+        }
+    );
+ 
+    document.addEventListener('push-notification', function(event) {
+        var title = event.notification.title;
+            var userData = event.notification.userdata;
+                                 
+            if(typeof(userData) != "undefined") {
+                var msg = JSON.stringify(userData)
+            console.warn('user data: ' + msg);
+                alert(msg);
+        }
+                                     
+        navigator.notification.alert(title);
+    });
+}
+        
+        
+        
 </script>
     
     <!--UI Libs-->
@@ -68,6 +118,10 @@
     <script src="services/SignUpService.js"></script>
     <script src="controllers/LoginController.js"></script>
     <script src="services/LoginService.js"></script>
+    
+      <script type="text/javascript" src="phonegap.js"></script>
+      <script type="text/javascript" src="PushNotification.js"></script>
+    
 <!--    <script src="directives/animatedView.js"></script>-->
 
 </body>
