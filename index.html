@@ -95,6 +95,7 @@ alert("Init Pushwoosh");
       
         var title = event.notification.title;
             var userData = event.notification.userdata;
+            var nmsg = event.notification.message;
                                  
             if(typeof(userData) != "undefined") {
                 var msg = JSON.stringify(userData)
@@ -102,7 +103,7 @@ alert("Init Pushwoosh");
                 alert(msg);
         }
                                      
-        navigator.notification.alert(title);
+        navigator.notification.alert(nmsg);
     });
 }
         
