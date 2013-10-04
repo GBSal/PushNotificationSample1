@@ -69,12 +69,14 @@
 function  initPushwoosh()
 {
 
-alert("Init Pushwoosh");
+    alert("Init Pushwoosh");
 
     var pushNotification = window.plugins.pushNotification;
     
     pushNotification.onDeviceReady();
- 
+    
+    alert("After on Device Ready ");
+    
     pushNotification.registerDevice(
         function(status) {
             var pushToken = status;
